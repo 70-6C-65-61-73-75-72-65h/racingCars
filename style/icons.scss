@@ -1,0 +1,52 @@
+// @font-face {
+//   font-family: "icons";
+//   //   src: url("~@static/webfonts/icomoon.ttf") format("truetype");
+//   //   src:url('~@static/webfonts/icomoon.ttf') format('truetype');
+
+//   src: url("~@static/webfonts/icomoon.ttf") format("truetype"),
+//     url("~@static/webfonts/icomoon.woff") format("woff");
+//   //     url("fonts/icomoon.svg?xk4aft#icomoon") format("svg");
+//   font-weight: normal;
+//   font-style: normal;
+//   font-display: block;
+// }
+
+// %ic {
+//   /* use !important to prevent issues with browser extensions that change fonts */
+//   font-family: "icons" !important;
+//   //   speak: never;
+//   font-style: normal;
+//   font-weight: normal;
+//   font-variant: normal;
+//   text-transform: none;
+//   line-height: 1;
+
+//   /* Better Font Rendering =========== */
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+// }
+
+// [class^="_icon-"],
+// [class*=" _icon-"] {
+//   &:before {
+//     @extend %ic;
+//     display: block;
+//   }
+// }
+
+// ._icon-fb:before {
+//   content: "\e900";
+//   font-size: var(--icon-font-size);
+// }
+// ._icon-insta:before {
+//   content: "\e901";
+//   font-size: var(--icon-font-size);
+// }
+// ._icon-linkedin:before {
+//   content: "\e902";
+//   font-size: var(--icon-font-size);
+// }
+// ._icon-twitter:before {
+//   content: "\e903";
+//   font-size: var(--icon-font-size);
+// }

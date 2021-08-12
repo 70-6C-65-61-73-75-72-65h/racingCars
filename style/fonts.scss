@@ -1,0 +1,14 @@
+// @import url('https://fonts.googleapis.com/css?family=Wendy%20One:400'); // pretty-font
+// @import url('https://fonts.googleapis.com/css?family=Lato:400,700,900');
+// @import url('https://fonts.googleapis.com/css?family=Avenir'); // card number of elements ( +, -)
+// &display=swap
+// контролирует порядок загрузки шрифтов - улучшает показатели в гугл пейдж спид
+// &subset=cyrillic-ext - если есть кирилица на сайте
+// @import url(https://fonts.googleapis.com/css?family=Heebo:regular,500,700,900&display=swap);
+
+// all others ( main, account-name)
+@import url(https://fonts.googleapis.com/css?family=Montserrat:600);
+// instead google sans (whole page info datas)
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:regular,700);
+// instead product sans (navbar)
+@import url(https://fonts.googleapis.com/css?family=Actor:regular,700);

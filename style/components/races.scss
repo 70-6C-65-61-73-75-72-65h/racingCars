@@ -1,0 +1,73 @@
+.races {
+  //   display: flex;
+
+  flex: 0 1 486px;
+
+  //   width: 486px;
+  height: 196px;
+
+  //   &__icon-dd {
+  //   }
+
+  &__container {
+    padding: 23px 37px;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-family: $font-main;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 20 / 16 * 100%;
+    color: #000000;
+  }
+
+  &__content {
+    flex-grow: 1;
+  }
+
+  &__chart {
+    margin-left: 13.5%;
+    width: 284px;
+    height: 92px;
+    background-color: rgb(230, 223, 223);
+  }
+
+  &__info {
+    font-family: $font-main;
+    font-style: normal;
+    font-weight: bold;
+    &-count {
+      font-size: 20px;
+      line-height: 25 / 20 * 100%;
+      letter-spacing: -0.07em;
+      color: #000000;
+    }
+    &-difference {
+      font-size: 16px;
+      line-height: 20 / 16 * 100%;
+      &.increasing {
+        color: #13cd3c;
+        & > img {
+          background: url("~@static/icons/differ-indicator-up.svg");
+          //    width:100%;
+        }
+      }
+      &.decreasing {
+        color: #0e0c0d;
+        & > img {
+          background: url("~@static/icons/differ-indicator-down.svg");
+          //   can fill svg inside if nessesary
+        }
+      }
+    }
+  }
+}
