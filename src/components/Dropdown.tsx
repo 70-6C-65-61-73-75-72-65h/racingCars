@@ -13,6 +13,8 @@ interface Props {
   icons?: any;
   classNameSelected?: string;
   classNameChoices?: string;
+  chosen?: DropdownChoice;
+  setChosen?: any;
 }
 
 const noneSelection = "None";
@@ -24,10 +26,12 @@ export default function Dropdown({
   icons,
   classNameSelected,
   classNameChoices,
+  chosen,
+  setChosen,
 }: Props): ReactElement {
   const dropdownRef = useRef(null);
   const [open, setOpen] = useState(false);
-  const [selection, setSelection] = useState(null);
+  // const [selection, setSelection] = useState(null);
 
   useEffect(() => {
     document.addEventListener("click", handleOuterClick);
@@ -35,6 +39,10 @@ export default function Dropdown({
       document.removeEventListener("click", handleOuterClick);
     };
   });
+
+  // useEffect(() => {
+  //   if (selection !== null) onClick && onClick();
+  // }, [chosen]);
 
   const handleDropdownClick = (ev) => {
     ev.preventDefault();
@@ -57,7 +65,8 @@ export default function Dropdown({
     const value = ev.target.dataset.value;
     const choice = mapValueToChoice(value);
 
-    setSelection(choice?.value ? choice : null);
+    setChosen(choice?.value ? choice : null);
+    // setSelection(choice?.value ? choice : null);
     setOpen(false);
   };
 
@@ -70,7 +79,7 @@ export default function Dropdown({
             classNameSelected,
           ])}
         >
-          {selection?.label ?? noneSelection}
+          {chosen?.label ?? noneSelection}
         </div>
         <div
           className={classNames(["dropdown__selection-icon", classNameIcon])}

@@ -8,3 +8,38 @@
     margin: 23px 8.58% 50px 5.4%;
   }
 }
+
+.chart {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 4px;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    // color: red;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__block {
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &__month {
+    color: #797c8c;
+
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 13 / 10 * 100%;
+    text-align: center;
+
+    margin-top: 9px;
+  }
+}

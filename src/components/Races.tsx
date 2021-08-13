@@ -3,10 +3,14 @@ import vectorDown from "@static/icons/down-vector.svg";
 import vectorUp from "@static/icons/up-vector.svg";
 import Dropdown from "./Dropdown";
 import { acceptableYears } from "@src/constants";
-import { fetchRacesByYear } from "@src/reducers/races";
+import { fetchRacesByYear, setYear } from "@src/reducers/races";
 import { useDispatch, useSelector } from "react-redux";
 import { useTypedSelector } from "@src/reducers";
+import ChartBlock from "./ChartBlock";
 
+import diffIncrease from "@static/icons/differ-indicator-up.svg";
+import diffDecrease from "@static/icons/differ-indicator-down.svg";
+import classNames from "@src/utils/classNames";
 interface Props {}
 
 export default function Races({}: Props): ReactElement {
@@ -14,11 +18,30 @@ export default function Races({}: Props): ReactElement {
 
   const dispatch = useDispatch();
 
-  const { races, chosenYear } = useTypedSelector((state) => state.Races);
+  const [diffCurrent, setDiff] = useState(0);
+  const [countRacesCurrent, setCountRaces] = useState(0);
+  const { raceList, chosenYear, maxMonthCount } = useTypedSelector(
+    (state) => state.Races
+  );
 
   //   fetchRacesByYear;
+  // useEffect(() => {
+  //     setCountRaces()
+  // }, [raceList])
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (chosenYear) {
+      // (2) then we fetch races
+      dispatch(fetchRacesByYear(chosenYear.value));
+    }
+  }, [chosenYear]);
+
+  const onRaceMonthChosen = (ev) => {
+    const count = ev.target.dataset.count;
+    const diffPerc = ev.target.dataset.prevDifferPercent;
+    setDiff(diffPerc);
+    setCountRaces(count);
+  };
 
   return (
     <section className="races card">
@@ -31,6 +54,9 @@ export default function Races({}: Props): ReactElement {
             // classNameIcon="races__icon-dd"
             icons={{ opened: vectorUp, closed: vectorDown }}
             choices={acceptableYears}
+            // (1) firstly we set year
+            setChosen={(year) => dispatch(setYear(year))}
+            chosen={chosenYear}
           />
 
           {/* <div className="races__year" onClick={() => setopenYearCatalog(true)}>
@@ -43,10 +69,41 @@ export default function Races({}: Props): ReactElement {
       </div>
       <div className="races__content">
         <div className="races__info">
-          <div className="races__info-count"></div>
-          <div className="races__info-difference"></div>
+          <div className="races__info-count">{countRacesCurrent}</div>
+          <div
+            className={classNames([
+              "races__info-difference",
+              // diffCurrent < 0 ? "decreasing" : "increasing",
+            ])}
+          >
+            <img src={diffCurrent < 0 ? diffDecrease : diffIncrease} alt="" />
+            {diffCurrent.toFixed(1)} %
+          </div>
         </div>
-        <div className="races__chart"></div>
+        <div className="races__chart chart">
+          {raceList && maxMonthCount
+            ? raceList.map((r, index) => (
+                <div className="chart__item" key={index}>
+                  <ChartBlock
+                    data-count={r.count}
+                    // if first month ( === 0%)
+                    data-prevDifferPercent={
+                      index === 0
+                        ? 0
+                        : ((r.count - raceList[index - 1].count) /
+                            raceList[index - 1].count) *
+                          100
+                    }
+                    blockColor="#7947F7"
+                    className="chart__block"
+                    onClick={onRaceMonthChosen}
+                    height={Math.floor((r.count / maxMonthCount) * 100)}
+                  />
+                  <div className="chart__month">{r.month}</div>
+                </div>
+              ))
+            : null}
+        </div>
       </div>
     </section>
   );

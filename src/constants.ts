@@ -10,7 +10,13 @@ export const acceptableYears = [
   { value: "2021", label: renameCurrentYear("2021") },
 ];
 
-export const racesData = [
+export interface IRaceData {
+  year: string;
+  month: string;
+  count: number;
+}
+
+export const racesData: IRaceData[] = [
   { year: acceptableYears[0].value, month: "Jan", count: 12 },
   { year: acceptableYears[0].value, month: "Feb", count: 23 },
   { year: acceptableYears[0].value, month: "Mar", count: 42 },

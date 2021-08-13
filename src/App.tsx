@@ -8,9 +8,11 @@ import Popup from "./components/Popup";
 // import Page from "./components/Page";
 // import { menuItems } from "./constants";
 import reducers from "./reducers";
-
-// import ReactDOM from "react-dom";
-// import { popupDiv } from "@src/constants";
+import thunk from "redux-thunk";
+import { applyMiddleware, compose, createStore } from "redux";
+import { Provider } from "react-redux";
+const store = createStore(reducers, compose(applyMiddleware(thunk)));
+// const store = createStore(reducers);
 
 interface Props {}
 
@@ -21,20 +23,22 @@ export default function App({}: Props): ReactElement {
 
   const [openPopup, setOpenPopup] = useState(false);
   return (
-    <BrowserRouter>
-      <AppContext.Provider
-        value={{ openPopup, setOpenPopup }}
-        // value={{ modal, dispatchModal, menuItems, openPopup, setOpenPopup }}
-      >
-        <div className="wrapper">
-          <Navbar />
-          <Page />
-          {/* <Header /> 
+    <Provider store={store}>
+      <BrowserRouter>
+        <AppContext.Provider
+          value={{ openPopup, setOpenPopup }}
+          // value={{ modal, dispatchModal, menuItems, openPopup, setOpenPopup }}
+        >
+          <div className="wrapper">
+            <Navbar />
+            <Page />
+            {/* <Header /> 
           <Page />
           <Footer />  */}
-        </div>
-        {/* {openPopup && ReactDOM.createPortal(<Popup />, popupDiv)} */}
-      </AppContext.Provider>
-    </BrowserRouter>
+          </div>
+          {/* {openPopup && ReactDOM.createPortal(<Popup />, popupDiv)} */}
+        </AppContext.Provider>
+      </BrowserRouter>
+    </Provider>
   );
 }
