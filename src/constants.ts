@@ -54,3 +54,5 @@ export const racesSheduled = [
     competition: "Olympics",
   },
 ];
+
+export const chartBlockMax = 70;

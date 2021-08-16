@@ -10,10 +10,59 @@
 }
 
 .chart {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  gap: 4px;
+  // &::after {
+  //   content: "";
+  //   position: absolute;
+  //   z-index: 1;
+  //   // height: calc(100% - 20px);
+  //   height: 5px;
+  //   width: 100%;
+  //   // top: 10px;
+  //   // right: -1px;
+  //   // width: 5px;
+  //   background: #666;
+  //   bottom: 5px;
+  // }
+
+  &__container {
+    min-width: 0;
+    // flex: 0 1 58.46%;
+    padding-bottom: 5px;
+    height: 97px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 4px;
+
+    // :horizontal
+    &::-webkit-scrollbar {
+      display: block;
+      height: 5px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgb(61, 12, 101);
+      border-right: none;
+      border-left: none;
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-track-piece:end {
+      background: transparent;
+      // margin-bottom: 10px;
+    }
+
+    &::-webkit-scrollbar-track-piece:start {
+      background: transparent;
+      // margin-top: 10px;
+    }
+  }
 
   &__item {
     display: flex;
