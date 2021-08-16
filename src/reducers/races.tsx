@@ -29,7 +29,9 @@ const racesSlice = createSlice({
     chosenYear: acceptableYears[acceptableYears.length - 1],
   },
   reducers: {
-    setYear: (state, action) => (state.chosenYear = action.payload),
+    setYear: (state, action) => {
+      state.chosenYear = action.payload;
+    },
     // to make relative percatage representation
     setMaxCount: (state) => {
       state.maxMonthCount = state.raceList.reduce(

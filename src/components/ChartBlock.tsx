@@ -14,9 +14,8 @@ export default function ChartBlock({
   dataId,
   //   blockBorderColor = blockColor,
 }): ReactElement {
-  console.log("height");
-  console.log(height);
-
+  height = dataCount === 0 ? 100 : height;
+  blockColor = dataCount === 0 ? "grey" : blockColor;
   return (
     <svg
       width="28"

@@ -18,7 +18,7 @@ export interface IRaceData {
 
 export const racesData: IRaceData[] = [
   { year: acceptableYears[0].value, month: "Jan", count: 12 },
-  { year: acceptableYears[0].value, month: "Feb", count: 23 },
+  { year: acceptableYears[0].value, month: "Feb", count: 0 },
   { year: acceptableYears[0].value, month: "Mar", count: 42 },
   { year: acceptableYears[0].value, month: "Apr", count: 12 },
   { year: acceptableYears[0].value, month: "May", count: 23 },
