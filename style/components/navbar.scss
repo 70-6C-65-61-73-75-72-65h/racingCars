@@ -40,6 +40,9 @@
     }
 
     &__item {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
       &-icon {
         margin-right: 19px;
       }
@@ -47,6 +50,14 @@
         font-size: 14px;
         line-height: 17 / 14 * 100%;
         color: #838383;
+      }
+
+      &:hover {
+        cursor: pointer;
+
+        &-icon > svg > path {
+          fill: blue;
+        }
       }
     }
 

@@ -66,7 +66,7 @@ module.exports = (env, options) => ({
       // icons
       {
         test: /\.(svg)$/i,
-        loader: "file-loader",
+        use: ["@svgr/webpack", "file-loader"],
 
         options: {
           name: env === "production" ? "[name]-[hash].[ext]" : "[name].[ext]",
